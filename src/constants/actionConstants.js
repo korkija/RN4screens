@@ -1,2 +1,5 @@
 export const LOGOUT_AUTH = 'LOGOUT_AUTH';
 export const LOGIN_AUTH = 'LOGIN_AUTH';
+export const IS_AUTH_PENDING = 'IS_AUTH_PENDING';
+export const IS_AUTH_RESOLVED = 'IS_AUTH_RESOLVED';
+export const IS_AUTH_REJECTED = 'IS_AUTH_REJECTED';

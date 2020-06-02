@@ -1,11 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {
-  View,
   StyleSheet,
   Text,
-  Image,
-  ScrollView,
-  Dimensions,
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 // import {useDispatch} from 'react-redux';
@@ -15,7 +11,6 @@ import SplashScreen from 'react-native-splash-screen';
 
 export const MainScreen = ({navigation}) => {
   useEffect(() => {
-    // console.log('MainScreen useEffect');
     SplashScreen.hide();
   }, []);
 

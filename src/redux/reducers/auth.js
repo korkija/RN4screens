@@ -1,6 +1,13 @@
-import {LOGIN_AUTH, LOGOUT_AUTH} from '../../constants/actionConstants';
+import {
+  LOGIN_AUTH,
+  LOGOUT_AUTH,
+  IS_AUTH_PENDING,
+  IS_AUTH_RESOLVED,
+  IS_AUTH_REJECTED,
+} from '../../constants/actionConstants';
 
 const initial_data = {
+  isLoading: true,
   isAuth: false,
   email: '',
   password: '',
@@ -8,6 +15,29 @@ const initial_data = {
 
 export const auth = (state = initial_data, action) => {
   switch (action.type) {
+    case IS_AUTH_PENDING: {
+      return {
+        ...state,
+        isLoading: true,
+        errorMsg: '',
+      };
+    }
+    case IS_AUTH_RESOLVED: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: true,
+        // photosList: action.payLoad,
+      };
+    }
+    case IS_AUTH_REJECTED: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: false,
+        errorMsg: action.payLoad,
+      };
+    }
     case LOGIN_AUTH: {
       return {
         ...state,

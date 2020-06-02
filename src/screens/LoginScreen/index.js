@@ -1,21 +1,66 @@
-import React, {useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {TextInput} from 'react-native-gesture-handler';
+import {StyleSheet, Text, SafeAreaView, Button} from 'react-native';
+import {useDispatch} from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 // import {useDispatch} from 'react-redux';
-// import {setPhoto} from '../../redux/actions/photo';
+import {tryAuth} from '../../redux/actions/auth';
 // import giphy from '../../assets/index';
 // import {ButtonCustom} from '../../components/ButtonCustom/ButtonCustom';
 
 export const LoginScreen = ({navigation}) => {
-  console.log('LoginScreen');
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
-  return <Text style={stylesMain.text}>LoginScreen</Text>;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const isDisabledButton = (email, password) =>
+    !password || !email || password.length < 5 || !emailRegex.test(email);
+
+  const dispatch = useDispatch();
+  const signIn = val => () => {
+    console.log('onClick');
+    dispatch(tryAuth(val));
+  };
+
+  return (
+    <SafeAreaView style={{height: '100%'}}>
+      <Text style={stylesMain.text}>LoginScreen</Text>
+      <TextInput
+        value={email}
+        returnKeyType="go"
+        placeHolder={'email'}
+        autoCorrect={false}
+        autoCapitalize="none"
+        onChange={event => setEmail(event.nativeEvent.text)}
+        keyboardType="email-address"
+        error=" "
+        autoFocus={true}
+      />
+      <TextInput
+        secureTextEntry
+        returnKeyType="go"
+        placeHolder={'password'}
+        onChange={event => setPassword(event.nativeEvent.text)}
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={password}
+        // keyboardType={'visible-password'}
+        // keyboardType="email-address"
+        error=" "
+      />
+
+      <Button
+        disabled={isDisabledButton(email, password)}
+        // style={button}
+        title="sign in"
+        onPress={signIn({email, password})}
+        // label={I18n.t('common.enter')}
+      />
+    </SafeAreaView>
+  );
 };
 const stylesMain = StyleSheet.create({
   text: {
