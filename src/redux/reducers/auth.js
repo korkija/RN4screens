@@ -1,7 +1,7 @@
 import {LOGIN_AUTH, LOGOUT_AUTH} from '../../constants/actionConstants';
 
 const initial_data = {
-  isAuth: true,
+  isAuth: false,
   email: '',
   password: '',
 };

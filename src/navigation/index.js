@@ -4,10 +4,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {LoginScreen} from '../screens/LoginScreen';
 import {WelcomeScreen} from '../screens/WelcomeScreen';
 import AppTab from './AppTab';
+import {useSelector} from 'react-redux';
 
 const Stack = createStackNavigator();
 
 const ScreensStack = () => {
+  const isAuth = useSelector(state => state.auth.isAuth);
+  console.log(isAuth);
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -15,12 +18,15 @@ const ScreensStack = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        isAuth ?
-        <Stack.Screen name="AppStack" component={AppTab} />
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        :
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        {isAuth ?
+          <>
+            <Stack.Screen name="AppStack" component={AppTab} />
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          </>
+         :
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        }
       </Stack.Navigator>
     </NavigationContainer>
   );
