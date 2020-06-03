@@ -1,8 +1,5 @@
-import React, { useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 // import {useDispatch} from 'react-redux';
 // import {setPhoto} from '../../redux/actions/photo';
@@ -16,7 +13,18 @@ export const MainScreen = ({navigation}) => {
 
   console.log('MainScreen');
 
-  return <Text style={stylesMain.text}>MainScreen</Text>;
+  return (
+    <TouchableOpacity
+      style={{
+        flex: 1,
+        width: null,
+        height: null,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <Text style={stylesMain.text}>MainScreen</Text>
+    </TouchableOpacity>
+  );
 };
 const stylesMain = StyleSheet.create({
   text: {

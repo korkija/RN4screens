@@ -11,7 +11,15 @@ export const WelcomeScreen = () => {
   const navigation = useNavigation();
   return (
     // <TouchableOpacity onPress={navigation.goBack()}>
-    <TouchableOpacity onPress={() => navigation.navigate('mainScreen')}>
+    <TouchableOpacity
+      style={{
+        flex: 1,
+        width: null,
+        height: null,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+      onPress={() => navigation.navigate('mainScreen')}>
       <Text style={stylesMain.text}>WelcomeScreen</Text>
     </TouchableOpacity>
   );
