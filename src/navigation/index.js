@@ -18,15 +18,15 @@ const ScreensStack = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        {isAuth ?
+        {isAuth ? (
           <>
             <Stack.Screen name="AppStack" component={AppTab} />
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            {/*<Stack.Screen name="LoginScreen" component={LoginScreen} />*/}
           </>
-         :
+        ) : (
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        }
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -25,8 +25,8 @@ export const tryAuth = ({email, password}) => dispatch => {
   axios
     .post(AUTH_LOGIN_URL, {email: email, password: password})
     .then(({data}) => {
-      console.log('data.result');
-      console.log(data);
+      // console.log('data.result');
+      // console.log(data);
       dispatch(isAuthResolved());
     })
     .catch(error => {

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
 import {StyleSheet, Text, SafeAreaView, Button} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 // import {useDispatch} from 'react-redux';
 import {tryAuth} from '../../redux/actions/auth';
@@ -12,6 +12,11 @@ export const LoginScreen = ({navigation}) => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+  const isAuth = useSelector(state => state.auth.isAuth);
+
+  if (isAuth) {
+    navigation.navigate('WelcomeScreen');
+  }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +26,6 @@ export const LoginScreen = ({navigation}) => {
 
   const dispatch = useDispatch();
   const signIn = val => () => {
-    console.log('onClick');
     dispatch(tryAuth(val));
   };
 
@@ -30,6 +34,12 @@ export const LoginScreen = ({navigation}) => {
       <Text style={stylesMain.text}>LoginScreen</Text>
       <TextInput
         value={email}
+        style={{
+          borderWidth: 2,
+          borderColor: 'grey',
+          borderRadius: 10,
+          margin: 10,
+        }}
         returnKeyType="go"
         placeHolder={'email'}
         autoCorrect={false}
@@ -41,6 +51,12 @@ export const LoginScreen = ({navigation}) => {
       />
       <TextInput
         secureTextEntry
+        style={{
+          borderWidth: 2,
+          borderColor: 'grey',
+          borderRadius: 10,
+          margin: 10,
+        }}
         returnKeyType="go"
         placeHolder={'password'}
         onChange={event => setPassword(event.nativeEvent.text)}
