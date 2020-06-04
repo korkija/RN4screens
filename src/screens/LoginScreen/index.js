@@ -1,25 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
 import {StyleSheet, Text, SafeAreaView, Button} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import SplashScreen from 'react-native-splash-screen';
 // import {useDispatch} from 'react-redux';
 import {tryAuth} from '../../redux/actions/auth';
 // import giphy from '../../assets/index';
 // import {ButtonCustom} from '../../components/ButtonCustom/ButtonCustom';
 
 export const LoginScreen = ({navigation}) => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
+  // useEffect(() => {
+  //   SplashScreen.hide();
+  // }, []);
   const isAuth = useSelector(state => state.auth.isAuth);
 
   if (isAuth) {
     navigation.navigate('WelcomeScreen');
   }
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('1@1.com');
+  const [password, setPassword] = useState('12345678');
   const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const isDisabledButton = (email, password) =>
     !password || !email || password.length < 5 || !emailRegex.test(email);

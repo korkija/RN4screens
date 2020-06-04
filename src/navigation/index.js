@@ -11,25 +11,41 @@ const Stack = createStackNavigator();
 const ScreensStack = () => {
   const isAuth = useSelector(state => state.auth.isAuth);
   console.log(isAuth);
+  const linking = {
+    prefixes: ['https://rn4screens.com', 'rn4screens://'],
+    config: {
+      WelcomeScreen: 'welcome',
+      AppStack: {
+        screens: {
+          SettingsScreen: 'settings',
+        },
+      },
+    },
+  };
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator
         mode="modal"
         screenOptions={{
           headerShown: false,
         }}>
-        {isAuth ? (
-          <>
-            <Stack.Screen name="AppStack" component={AppTab} />
-            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-            {/*<Stack.Screen name="LoginScreen" component={LoginScreen} />*/}
-          </>
-        ) : (
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        )}
+        {/*{isAuth ? (*/}
+        <>
+          <Stack.Screen name="AppStack" component={AppTab} />
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          {/*<Stack.Screen name="LoginScreen" component={LoginScreen} />*/}
+        </>
+        {/*) : (*/}
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        {/*)}*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default ScreensStack;
+export default () => {
+  const prefix = 'rn4s://'; //  rn4screens://login
+  //adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://login" com.simpleapp
+  return <ScreensStack uriPrefix={prefix} />;
+};
+// export default ScreensStack;

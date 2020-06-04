@@ -22,8 +22,9 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
 
+        </activity>
+<!--        adb shell am start -W -a android.intent.action.VIEW -d "rn4s://settings" com.rn4screens-->
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name"
@@ -31,6 +32,26 @@
                 android:launchMode="singleTask"
                 android:windowSoftInputMode="adjustResize"
                 android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="rn4screens" android:host="welcome" />
+                <data android:scheme="rn4screens" android:host="settings" />
+            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+<!--                <data android:scheme="rn4screens" android:host="settings" />-->
+<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="rn4screens.com" android:pathPrefix="/welcome"/>
+                <data android:scheme="https" android:host="rn4screens.com" android:pathPrefix="/settings"/>
+            </intent-filter>
         </activity>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
     </application>

@@ -20,12 +20,12 @@ const AppTab = () => {
       }}>
       <Tab.Screen
         options={{title: 'Main'}}
-        name="mainScreen"
+        name="MainScreen"
         component={MainScreen}
       />
       <Tab.Screen
-        options={{title: 'settings'}}
-        name="settingsScreen"
+        options={{title: 'Settings'}}
+        name="SettingsScreen"
         component={SettingsScreen}
       />
     </Tab.Navigator>
