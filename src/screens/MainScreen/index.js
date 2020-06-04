@@ -1,32 +1,45 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-// import {useDispatch} from 'react-redux';
-// import {setPhoto} from '../../redux/actions/photo';
-// import giphy from '../../assets/index';
-// import {ButtonCustom} from '../../components/ButtonCustom/ButtonCustom';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {logout} from '../../redux/actions/auth';
+import {useNavigation} from '@react-navigation/native';
 
-export const MainScreen = ({navigation}) => {
-  // useEffect(() => {
-  //   SplashScreen.hide();
-  // }, []);
+export const MainScreen = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  console.log('MainScreen');
+  const logoutSc = async () => {
+    await dispatch(logout());
+    navigation.navigate('MainScreen');
+  };
 
   return (
-    <TouchableOpacity
-      style={{
-        flex: 1,
-        width: null,
-        height: null,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text style={stylesMain.text}>MainScreen</Text>
-    </TouchableOpacity>
+    <View style={stylesMain.container}>
+      <View style={stylesMain.contentText}>
+        <Text style={stylesMain.text}>MainScreen</Text>
+      </View>
+      <View style={stylesMain.button}>
+        <Button title="logout" onPress={logoutSc} />
+      </View>
+    </View>
   );
 };
 const stylesMain = StyleSheet.create({
+  contentText: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    fontSize: 26,
+  },
   text: {
     fontSize: 26,
+  },
+  button: {
+    flex: 1,
+    alignItems: 'stretch',
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });

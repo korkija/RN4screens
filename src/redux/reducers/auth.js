@@ -1,9 +1,9 @@
 import {
-  LOGIN_AUTH,
   LOGOUT_AUTH,
   IS_AUTH_PENDING,
   IS_AUTH_RESOLVED,
   IS_AUTH_REJECTED,
+  LOGOUT_AUTH_REJECTED,
 } from '../../constants/actionConstants';
 
 const initial_data = {
@@ -27,7 +27,6 @@ export const auth = (state = initial_data, action) => {
         ...state,
         isLoading: false,
         isAuth: true,
-        // photosList: action.payLoad,
       };
     }
     case IS_AUTH_REJECTED: {
@@ -38,22 +37,20 @@ export const auth = (state = initial_data, action) => {
         errorMsg: action.payLoad,
       };
     }
-    case LOGIN_AUTH: {
-      return {
-        ...state,
-        isAuth: true,
-        email: action.payLoad.email,
-        password: action.payLoad.password,
-      };
-    }
     case LOGOUT_AUTH: {
       return {
         ...state,
         isAuth: false,
-        photosList: action.payLoad,
       };
     }
-
+    case LOGOUT_AUTH_REJECTED: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: false,
+        errorMsg: action.payLoad,
+      };
+    }
     default: {
       return state;
     }

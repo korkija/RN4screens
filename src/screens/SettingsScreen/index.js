@@ -1,23 +1,22 @@
-import React, {useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
-// import {useDispatch} from 'react-redux';
-// import {setPhoto} from '../../redux/actions/photo';
-// import giphy from '../../assets/index';
-// import {ButtonCustom} from '../../components/ButtonCustom/ButtonCustom';
+import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 
-export const SettingsScreen = ({navigation}) => {
-  console.log('SettingsScreen');
-  return <Text style={stylesMain.text}>SettingsScreen</Text>;
+export const SettingsScreen = () => {
+  return (
+    <View style={stylesMain.container}>
+      <Text style={stylesMain.text}>SettingsScreen</Text>
+    </View>
+  );
 };
 const stylesMain = StyleSheet.create({
   text: {
     fontSize: 26,
+  },
+  container: {
+    flex: 1,
+    width: null,
+    height: null,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

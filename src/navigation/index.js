@@ -29,23 +29,18 @@ const ScreensStack = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        {/*{isAuth ? (*/}
-        <>
-          <Stack.Screen name="AppStack" component={AppTab} />
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-          {/*<Stack.Screen name="LoginScreen" component={LoginScreen} />*/}
-        </>
-        {/*) : (*/}
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        {/*)}*/}
+        {isAuth ? (
+          <>
+            <Stack.Screen name="AppStack" component={AppTab} />
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          </>
+        ) : (
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default () => {
-  const prefix = 'rn4s://'; //  rn4screens://login
-  //adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://login" com.simpleapp
-  return <ScreensStack uriPrefix={prefix} />;
-};
-// export default ScreensStack;
+export default ScreensStack;
+//adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://login" com.simpleapp
