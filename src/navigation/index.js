@@ -43,4 +43,3 @@ const ScreensStack = () => {
 };
 
 export default ScreensStack;
-//adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://login" com.simpleapp
