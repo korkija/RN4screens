@@ -24,10 +24,6 @@
             </intent-filter>
 
         </activity>
-<!--        adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://welcome" com.rn4screens-->
-<!--        adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://settings" com.rn4screens-->
-<!--        adb shell am start -W -a android.intent.action.VIEW -d "http://rn4screens.com/settings" com.rn4screens-->
-<!--        adb shell am start -W -a android.intent.action.VIEW -d "http://rn4screens.com/settings" com.rn4screens-->
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name"
