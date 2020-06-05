@@ -1,3 +1,6 @@
+APK file - 
+You can find APK file at RN4screens/android/app/release/
+
 TEST deepLinking on Emulator
 
 adb shell am start -W -a android.intent.action.VIEW -d "rn4screens://welcome" com.rn4screens
