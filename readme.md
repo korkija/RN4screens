@@ -13,10 +13,10 @@ adb shell am start -W -a android.intent.action.VIEW -d "https://rn4screens.com/w
 
 TEST deepLinking on Device
 
-<a href="rn4screens://settings">rn4screens://settings</a>
+< a href="rn4screens://settings>rn4screens://settings< /a>
 
-<a href="rn4screens://welcome">rn4screens://welcome</a>
+< a href="rn4screens://welcome>rn4screens://welcome< /a>
 
-<a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome</a>
+<a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome
 
-<a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome</a>
+<a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome
