@@ -17,6 +17,6 @@ TEST deepLinking on Device
 
 < a href="rn4screens://welcome>rn4screens://welcome< /a>
 
-<a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome
+< a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome< /a>
 
-<a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome
+< a href="https://rn4screens.com/welcome">https://rn4screens.com/welcome< /a>
